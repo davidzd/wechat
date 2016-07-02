@@ -3,6 +3,7 @@ import hashlib
 from xml.etree import ElementTree
 import time
 from django.utils.encoding import *
+from msg import Message
 
 # init token.
 TOKEN = "weixin"
@@ -36,7 +37,7 @@ def responseMsg(postContent):
             if msg['MsgType'] == 'event':
                 resultStr = handleEvent(msg)
         else:
-            resultStr = 'Input something...'
+            resultStr = Message(type="text",msg=msg)
         return resultStr
 
 # transform xml into dict
@@ -51,6 +52,5 @@ def xmlContent2Dic(xmlContent):
 # handler for Event
 def handleEvent(msg):
     if msg['Event'] == 'subscribe':
-        resultStr="<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[%s]]></MsgType><Content><![CDATA[%s]]></Content></xml>"
-        resultStr = resultStr % (msg['FromUserName'],msg['ToUserName'],str(int(time.time())),'text',u'我就是试着玩的,没想到你还真关注了.')
+        resultStr=Message(type="text",msg=msg,text=u'我就是试着玩的,没想到你还真关注了.')
     return resultStr
