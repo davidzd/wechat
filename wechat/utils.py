@@ -27,6 +27,9 @@ def checkSignature(request):
 # response to the msg
 def responseMsg(postContent):
     postStr = smart_str(postContent)
+    # post content
+    print postStr
+
     if postStr:
         msg = xmlContent2Dic(postStr)
         if msg['MsgType']:
@@ -34,7 +37,7 @@ def responseMsg(postContent):
                 resultStr = handleEvent(msg)
         else:
             resultStr = 'Input something...'
-    return resultStr
+        return resultStr
 
 # transform xml into dict
 def xmlContent2Dic(xmlContent):
