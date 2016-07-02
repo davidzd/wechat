@@ -199,4 +199,4 @@ def upload(path, type, token):
 
 # print saveImage("http://mmbiz.qpic.cn/mmbiz/KNgyCFSwIYcKNJr09gTCJ5S9og71Tlo2XvTSn6ByZhPybOfOuE906K7flkxJDoiaB73p6Ga3XrGLGPkvYjpPVsQ/0")
 # print imageMark("../images/1467476715.61.jpg")
-print upload('../images/1467476715.61.jpg', 'image', u'EkNPk5W8XDzRl8zh6zNskYPxHLwqFb9EptcAExIxcjnpp3SFOi8YSTcK_JqbOl7lWynOCKAH02s8GiJxnmdq2omz16iMI6Dc3bfnEhMYtQgjEJcJ9uYUh-qXWkADeYeGAOObAGASGG')
+# print upload('../images/1467476715.61.jpg', 'image', u'EkNPk5W8XDzRl8zh6zNskYPxHLwqFb9EptcAExIxcjnpp3SFOi8YSTcK_JqbOl7lWynOCKAH02s8GiJxnmdq2omz16iMI6Dc3bfnEhMYtQgjEJcJ9uYUh-qXWkADeYeGAOObAGASGG')
