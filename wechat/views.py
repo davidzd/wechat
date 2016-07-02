@@ -26,6 +26,7 @@ def login(request):
     response = HttpResponse("hahahah")
     return response
 
+@accessToken
 def index(request):
     response = HttpResponse("index")
     return response

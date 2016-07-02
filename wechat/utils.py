@@ -3,9 +3,11 @@ import hashlib
 from xml.etree import ElementTree
 from django.utils.encoding import *
 from msg import Message
-from urllib import urlencode
+import urllib
 import requests
 import time
+import json
+from PIL import Image, ImageEnhance, ImageDraw, ImageFont
 
 # init token.
 TOKEN = "weixin"
@@ -31,12 +33,12 @@ def checkSignature(request):
 def responseMsg(request):
     postContent = request.body
     postStr = smart_str(postContent)
-    token = request.session['token']
     # post content
     print postStr
     resultStr = None
     if postStr:
         msg = xmlContent2Dic(postStr)
+        msg['token'] = request.session['token']
         if msg['MsgType']:
             if msg['MsgType'] == 'event':
                 resultStr = handleEvent(msg)
@@ -59,6 +61,10 @@ def xmlContent2Dic(xmlContent):
 
 # handler for Event
 def handleImage(msg):
+    url = saveImage(msg['PicUrl'])
+    path = saveImage(url)
+    path = imageMark(path)
+    msg['MediaId'] = upload(path,'image',msg['token'])
     resultStr = Message(type="image", msg=msg, text=u'我就是试着玩的,没想到你还真关注了.')
     return resultStr
 
@@ -71,7 +77,7 @@ def handleEvent(msg):
 # to asc2
 def encodeurl(url):
     query = dict(name=url)
-    return urlencode(query)
+    return urllib.urlencode(query)
 
 # token decoration
 def accessToken(func):
@@ -86,5 +92,111 @@ def accessToken(func):
         return result
     return accessToken
 
+# save image
+def saveImage(url):
+    path = "../images/%s.jpg"%(time.time())
+    data = urllib.urlopen(url).read()
+    f = file(path, "wb")
+    f.write(data)
+    f.close()
+    return path
+
+# change image
+def imageMark(path):
+    text = u'我喜欢大饼饼哈哈哈哈'
+    im = Image.open(path)
+    mark = textToImg(text)
+    image = watermark(im, mark, 'center', 0.4)
+    if image:
+        image.save(path)
+        return path
+    else:
+        print "Sorry, Failed."
 
 
+# text 2 Image
+def textToImg(text, font_color="black", font_size=20):
+    font = ImageFont.truetype("WawaSC-Regular.otf",font_size)
+    # multi lines
+    text = text.split('\n')
+    mark_width = 0
+    for i in range(len(text)):
+        (width, height) = font.getsize(text[i])
+        if mark_width < width:
+            mark_width = width
+    mark_height = height* len(text)
+
+    # generate pic
+    mark = Image.new('RGBA', (mark_width, mark_height))
+    draw = ImageDraw.ImageDraw(mark, "RGBA")
+    draw.setfont(font)
+    for i in range(len(text)):
+        (width, height) = font.getsize(text[i])
+        draw.text((0, i * height), text[i], fill=font_color)
+    return mark
+
+# set opacity
+def setOpacity(im, opacity):
+
+    assert opacity >=0 and opacity < 1
+    if im.mode != "RGBA":
+        im = im.convert('RGBA')
+    else:
+        im = im.copy()
+    alpha = im.split()[3]
+    alpha = ImageEnhance.Brightness(alpha).enhance(opacity)
+    im.putalpha(alpha)
+    return im
+
+# set warter mark
+def watermark(im, mark, position, opacity=1):
+    try:
+        if opacity < 1:
+            mark = setOpacity(mark, opacity)
+        if im.mode != 'RGBA':
+            im = im.convert('RGBA')
+        if im.size[0] < mark.size[0] or im.size[1] < mark.size[1]:
+            print "The mark image size is larger size than original image file."
+            return False
+
+        #set position
+        if position == 'left_top':
+            x = 0
+            y = 0
+        elif position == 'left_bottom':
+            x = 0
+            y = im.size[1] - mark.size[1]
+        elif position == 'right_top':
+            x = im.size[0] - mark.size[0]
+            y = 0
+        elif position == 'right_bottom':
+            x = im.size[0] - mark.size[0]
+            y = im.size[1] - mark.size[1]
+        else:
+            x = (im.size[0] - mark.size[0]) / 2
+            y = (im.size[1] - mark.size[1]) / 2
+
+        layer = Image.new('RGBA', im.size,)
+        layer.paste(mark,(x,y))
+        return Image.composite(layer, im, layer)
+    except Exception as e:
+        print ">>>>>>>>>>> WaterMark EXCEPTION:  " + str(e)
+        return False
+
+# upload media
+def upload(path, type, token):
+    url = "https://api.weixin.qq.com/cgi-bin/media/upload"
+    file = {'file': open(path, 'rb')}
+    data = {
+        'access_token': token,
+        'type': type,
+    }
+    response = requests.post(url,files=file,data=data)
+    return response.json()
+
+
+
+
+# print saveImage("http://mmbiz.qpic.cn/mmbiz/KNgyCFSwIYcKNJr09gTCJ5S9og71Tlo2XvTSn6ByZhPybOfOuE906K7flkxJDoiaB73p6Ga3XrGLGPkvYjpPVsQ/0")
+# print imageMark("../images/1467476715.61.jpg")
+print upload('../images/1467476715.61.jpg', 'image', u'EkNPk5W8XDzRl8zh6zNskYPxHLwqFb9EptcAExIxcjnpp3SFOi8YSTcK_JqbOl7lWynOCKAH02s8GiJxnmdq2omz16iMI6Dc3bfnEhMYtQgjEJcJ9uYUh-qXWkADeYeGAOObAGASGG')
