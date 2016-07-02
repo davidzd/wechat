@@ -29,7 +29,7 @@ def responseMsg(postContent):
     postStr = smart_str(postContent)
     # post content
     print postStr
-
+    resultStr = None
     if postStr:
         msg = xmlContent2Dic(postStr)
         if msg['MsgType']:
