@@ -1,7 +1,7 @@
 import hashlib
 
 # init token.
-TOKEN = "wexin"
+TOKEN = "weixin"
 
 # check signature from wechat server.
 def checkSignature(request):
