@@ -59,7 +59,7 @@ def xmlContent2Dic(xmlContent):
 
 # handler for Event
 def handleImage(msg):
-    resultStr = Message(type="text", msg=msg, text=u'我就是试着玩的,没想到你还真关注了.')
+    resultStr = Message(type="image", msg=msg, text=u'我就是试着玩的,没想到你还真关注了.')
     return resultStr
 
 # handler for Event
