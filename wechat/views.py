@@ -6,15 +6,26 @@ import time
 from django.views.decorators.csrf import csrf_exempt
 from utils import checkSignature
 from utils import responseMsg
+from utils import accessToken
 
 # check the service
 @csrf_exempt
+
+@accessToken
 def entry(request):
     if request.method == 'GET':
         response = HttpResponse(checkSignature(request),content_type="text/plain")
     elif request.method == 'POST':
-        response=  HttpResponse(responseMsg(request.body),content_type="application/xml")
+        response=  HttpResponse(responseMsg(request),content_type="application/xml")
     else:
         response = None
     print response
+    return response
+
+def login(request):
+    response = HttpResponse("hahahah")
+    return response
+
+def index(request):
+    response = HttpResponse("index")
     return response
