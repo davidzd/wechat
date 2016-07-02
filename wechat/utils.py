@@ -12,7 +12,8 @@ def checkSignature(request):
     echoStr = request.GET.get("echostr",None)
     token = TOKEN
     tmpList = [token,timestamp,nonce]
-    tmpstr = "%s%s%s" % tuple(tmpList.sort())
+    tmpList.sort()
+    tmpstr = "%s%s%s"%tuple(tmpList)
     tmpstr = hashlib.sha1(tmpstr).hexdigest()
     if tmpstr == signature:
         return echoStr
