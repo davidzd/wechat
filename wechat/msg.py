@@ -7,7 +7,7 @@ class Message:
         # dict for reflection
         self.result = {
             "text": self.textMsg,
-            "image": self.textMsg,
+            "image": self.imgMsg,
         }
 
         # default text.
