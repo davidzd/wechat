@@ -36,6 +36,8 @@ def responseMsg(postContent):
         if msg['MsgType']:
             if msg['MsgType'] == 'event':
                 resultStr = handleEvent(msg)
+            else:
+                resultStr = Message(type="text", msg=msg)
         else:
             resultStr = Message(type="text",msg=msg)
         return resultStr
