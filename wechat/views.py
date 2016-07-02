@@ -16,4 +16,5 @@ def entry(request):
         response=  HttpResponse(responseMsg(request.body),content_type="application/xml")
     else:
         response = None
+    print response
     return response
