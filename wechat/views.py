@@ -15,7 +15,7 @@ from utils import accessToken
 def entry(request):
     print request.GET.get('echostr')
     if request.method == 'GET':
-        response = HttpResponse(checkSignature(request),content_type="text/plain")
+        response = HttpResponse(checkSignature(request))
     elif request.method == 'POST':
         response=  HttpResponse(responseMsg(request),content_type="application/xml")
     else:
