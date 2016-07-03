@@ -18,7 +18,7 @@ class Message:
 
         # default text.
         if not "text" in kwargs:
-            kwargs['text'] = "发张图片试试?"
+            kwargs['text'] = u"发张图片试试?"
 
         # define msg type by args.
         if "type" and "msg" in kwargs:
