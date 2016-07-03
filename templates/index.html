@@ -23,7 +23,7 @@
     <script type="text/html" id="tpl_home">
 <div class="hd">
     <h1 class="page_title">Discount</h1>
-    <p class="page_desc">comes from WeUI</p>
+    <p class="page_desc">Da Zhang</p>
 </div>
 <div class="bd">
     <div class="weui_grids">
@@ -93,47 +93,62 @@
     <h1 class="page_title">个人名片</h1>
 </div>
 <div class="bd">
+
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="weui_uploader">
+                    <div class="weui_uploader_hd weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">头像</div>
+                        <div class="weui_cell_ft">0/2</div>
+                    </div>
+                    <div class="weui_uploader_bd">
+                        <ul class="weui_uploader_files">
+                            <li class="weui_uploader_file" style="background-image:url({{ data.headimgurl }})"></li>
+                                <div class="weui_uploader_status_content">
+                                    <i class="weui_icon_warn"></i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="weui_cells_title">简要个人信息</div>
     <div class="weui_cells">
+
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>昵称</p>
+            </div>
+            <div class="weui_cell_ft">{{ data.nickname }}</div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>性别</p>
+            </div>
+            {% if data.sex == 1 %}
+            <div class="weui_cell_ft">男</div>
+            {% else %}
+            <div class="weui_cell_ft">女</div>
+            {% endif %}
+        </div>
+
         <div class="weui_cell">
             <div class="weui_cell_bd weui_cell_primary">
                 <p>省份</p>
             </div>
             <div class="weui_cell_ft">{{ data.province }}</div>
         </div>
-    </div>
 
-
-
-    <div class="weui_cells_title">上传</div>
-    <div class="weui_cells weui_cells_form">
         <div class="weui_cell">
             <div class="weui_cell_bd weui_cell_primary">
-                <div class="weui_uploader">
-                    <div class="weui_uploader_hd weui_cell">
-                        <div class="weui_cell_bd weui_cell_primary">图片上传</div>
-                        <div class="weui_cell_ft">0/2</div>
-                    </div>
-                    <div class="weui_uploader_bd">
-                        <ul class="weui_uploader_files">
-                            <li class="weui_uploader_file" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
-                            <li class="weui_uploader_file" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
-                            <li class="weui_uploader_file" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
-                            <li class="weui_uploader_file weui_uploader_status" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)">
-                                <div class="weui_uploader_status_content">
-                                    <i class="weui_icon_warn"></i>
-                                </div>
-                            </li>
-                            <li class="weui_uploader_file weui_uploader_status" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)">
-                                <div class="weui_uploader_status_content">50%</div>
-                            </li>
-                        </ul>
-                        <div class="weui_uploader_input_wrp">
-                            <input class="weui_uploader_input" type="file" accept="image/*" multiple />
-                        </div>
-                    </div>
-                </div>
+                <p>城市</p>
             </div>
+            <div class="weui_cell_ft">{{ data.city }}</div>
         </div>
     </div>
     <div class="weui_btn_area">
