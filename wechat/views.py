@@ -38,6 +38,7 @@ def login(request):
     if r:
         # get user info
         userInfo = getUserInfo(r['access_token'],r['openid'])
+        print userInfo
         response = HttpResponse(userInfo)
         return response
     # else:
