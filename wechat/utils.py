@@ -22,8 +22,10 @@ def checkSignature(request):
     token = TOKEN
     tmpList = [token,timestamp,nonce]
     tmpList.sort()
-    tmpstr = "%s%s%s"%tuple(tmpList)
-    tmpstr = hashlib.sha1(tmpstr).hexdigest()
+    # tmpstr = "%s%s%s"%tuple(tmpList)
+    sha1 = hashlib.sha1()
+    map(sha1.update, tmpList)
+    tmpstr = sha1.hexdigest()
     if tmpstr == signature:
         return echoStr
     else:
