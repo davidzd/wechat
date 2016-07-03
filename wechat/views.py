@@ -13,6 +13,7 @@ from utils import accessToken
 
 @accessToken
 def entry(request):
+    print request.GET.get('echostr')
     if request.method == 'GET':
         response = HttpResponse(checkSignature(request),content_type="text/plain")
     elif request.method == 'POST':
