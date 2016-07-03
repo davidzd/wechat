@@ -96,7 +96,7 @@ def accessToken(func):
 
 # save image
 def saveImage(url):
-    path = "./images/%s.jpg"%(time.time())
+    path = "/home/ubuntu/wechat/images/%s.jpg"%(time.time())
     data = urllib.urlopen(url).read()
     f = file(path, "wb")
     f.write(data)
