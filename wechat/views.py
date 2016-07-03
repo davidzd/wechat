@@ -28,7 +28,9 @@ def entry(request):
     return response
 
 def login(request):
-    response = HttpResponse("hahahah")
+    if request.method == 'GET':
+        code = request.GET.code
+    response = HttpResponse(code)
     return response
 
 def index(request):
