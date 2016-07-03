@@ -85,7 +85,7 @@ def encodeurl(url):
 def accessToken(func):
     def accessToken(request):
         url = "https://api.weixin.qq.com/cgi-bin/token"
-        response = requests.get(url,dict(grant_type="client_credential",appid="wxf2f3abb77119d45b",secret="d6ecb363157505efdcbbf0cefa9ee637")).json()
+        response = requests.get(url,dict(grant_type="client_credential",appid="wx4a33e66972710919",secret="9d3ca01be1e9510e59582d63f753fc3c")).json()
         ts = int(time.time())
         if 'token' not in request.session or ts-request.session['timeStamp']>=6000:
             request.session['token'] = response['access_token']
