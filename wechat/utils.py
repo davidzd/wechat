@@ -114,10 +114,11 @@ def getToken(code):
 
 def getUserInfo(token, openid):
     url = "https://api.weixin.qq.com/sns/userinfo"
-    response = requests.get(url, dict(token=token, openid=openid, lang="zh_CN")).json()
+    response = requests.get(url, dict(access_token=token, openid=openid, lang="zh_CN")).json()
     if "openid" in response:
         return response
     return None
+
 
 
 # save image
@@ -230,6 +231,6 @@ def upload(path, type, token):
 # print imageMark("../images/WeChat_1467530177.jpeg")
 # mark = textToImg('我喜欢大饼饼哈哈哈哈哈')
 # print mark
-print encodeurl("http://130.56.254.160/wechat/login")
+# print encodeurl("http://130.56.254.160/wechat/login")
 
-
+print getUserInfo("qaX71zFkvrKwH9zWFx1bq1FHq1NzRz4kwVV7ttL2nwIn-SBAuEbIMwrMZludj0bKKoHf34FQnRh69aU8F8LJ96L9LDx6RQWPAyKmBcMiAgo",'oa6cGt4PrUC9BSWuK09IvehmgcNU')
