@@ -123,7 +123,7 @@ def imageMark(path):
 
 
 # text 2 Image
-def textToImg(text, font_color="black", font_size=20):
+def textToImg(text, font_color="black", font_size=40):
     font = ImageFont.truetype("/home/ubuntu/wechat/images/WawaSC-Regular.otf",font_size)
     # multi lines
     text = text.split('\n')
