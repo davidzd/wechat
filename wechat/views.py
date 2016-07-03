@@ -58,5 +58,8 @@ def index(request):
     :param request:
     :return:
     '''
-    user = dict(argu="sb")
-    return render_to_response('index.html', dict(data=user))
+    ha = {u'province': u'', u'openid': u'oa6cGt4PrUC9BSWuK09IvehmgcNU',
+          u'headimgurl': u'http://wx.qlogo.cn/mmopen/PiajxSqBRaELwKcgGMFpnGn4WNVzPicUMoOuI0foZ06uozNK2pC4Bu96VibfyRDzvrkMY2kdSPEMcj97McG2J4a5A/0',
+          u'language': u'zh_CN', u'city': u'', u'country': '\xe4\xb8\xad\xe5\x9b\xbd', u'sex': 1, u'privilege': [],
+          u'nickname': '\xe5\xb0\x8f\xe5\x93\x92'}
+    return render_to_response('index.html', dict(data=ha))

@@ -114,6 +114,7 @@ def getToken(code):
 
 def getUserInfo(token, openid):
     url = "https://api.weixin.qq.com/sns/userinfo"
+    print "token: %s"%token
     response = requests.get(url, dict(access_token=token, openid=openid, lang="zh_CN")).json()
     if "openid" in response:
         return response
@@ -223,6 +224,7 @@ def upload(path, type, token):
     response = requests.post(url,files=file,data=data)
     print "UPLOAD response \n %s"%response.json()
     return response.json()
+
 
 
 

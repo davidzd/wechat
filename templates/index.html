@@ -94,25 +94,9 @@
 </div>
 <div class="bd">
 
-    <div class="weui_cells weui_cells_form">
+    <div class="weui_cells weui_cells_form" style="background: transparent !important;">
         <div class="weui_cell">
-            <div class="weui_cell_bd weui_cell_primary">
-                <div class="weui_uploader">
-                    <div class="weui_uploader_hd weui_cell">
-                        <div class="weui_cell_bd weui_cell_primary">头像</div>
-                        <div class="weui_cell_ft">0/2</div>
-                    </div>
-                    <div class="weui_uploader_bd">
-                        <ul class="weui_uploader_files">
-                            <li class="weui_uploader_file" style="background-image:url({{ data.headimgurl }})"></li>
-                                <div class="weui_uploader_status_content">
-                                    <i class="weui_icon_warn"></i>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <li class="weui_uploader_file" style="background-image:url({{ data.headimgurl }}); margin-left: auto; margin-right: auto;"></li>
         </div>
     </div>
 
@@ -135,6 +119,13 @@
             {% else %}
             <div class="weui_cell_ft">女</div>
             {% endif %}
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>国家</p>
+            </div>
+            <div class="weui_cell_ft">{{ data.country }}</div>
         </div>
 
         <div class="weui_cell">
