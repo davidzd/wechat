@@ -114,7 +114,7 @@ def imageMark(path):
     text = u'我喜欢大饼饼哈哈哈哈'
     im = Image.open(path)
     mark = textToImg(text)
-    image = watermark(im, mark, 'right_bottom', 0.9)
+    image = watermark(im, mark, 'center', 0.9)
     if image:
         image.save(path)
         return path
@@ -132,8 +132,8 @@ def textToImg(text, font_color="black", font_size=40):
         (width, height) = font.getsize(text[i])
         if mark_width < width:
             mark_width = width
-    mark_height = height* len(text)
-
+    mark_height = height* len(text)*2
+    print width, height
     # generate pic
     mark = Image.new('RGBA', (mark_width, mark_height))
     draw = ImageDraw.ImageDraw(mark, "RGBA")
