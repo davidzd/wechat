@@ -66,7 +66,7 @@ def handleImage(msg):
     url = saveImage(msg['PicUrl'])
     path = saveImage(url)
     path = imageMark(path)
-    msg['MediaId'] = upload(path,'image',msg['token'])
+    msg['MediaId'] = upload(path,'image',msg['token'])['media_id']
     resultStr = Message(type="image", msg=msg, text=u'我就是试着玩的,没想到你还真关注了.')
     return resultStr
 
@@ -194,6 +194,7 @@ def upload(path, type, token):
         'type': type,
     }
     response = requests.post(url,files=file,data=data)
+    print "UPLOAD response \n %s"%response.json()
     return response.json()
 
 
