@@ -115,12 +115,11 @@ def getToken(code):
 def getUserInfo(token, openid):
     url = "https://api.weixin.qq.com/sns/userinfo"
     print "token: %s"%token
-    response = requests.get(url, dict(access_token=token, openid=openid, lang="zh_CN")).json()
+    response = requests.get(url, dict(access_token=token, openid=openid, lang="zh_CN"))
+    response = json.loads(response.content)
     if "openid" in response:
         return response
     return None
-
-
 
 # save image
 def saveImage(url):
