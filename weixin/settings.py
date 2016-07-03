@@ -1,3 +1,10 @@
+#coding=utf-8
+
+'''
+Author: Da
+Date: 03072016
+'''
+
 """
 Django settings for weixin project.
 

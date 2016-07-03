@@ -1,4 +1,10 @@
 #coding=utf-8
+
+'''
+Author: Da
+Date: 03072016
+'''
+
 import time
 
 # all msg are defined here.

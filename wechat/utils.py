@@ -1,4 +1,10 @@
 #coding=utf-8
+
+'''
+Author: Da
+Date: 03072016
+'''
+
 import hashlib
 from xml.etree import ElementTree
 from django.utils.encoding import *

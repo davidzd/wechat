@@ -1,4 +1,10 @@
 #coding=utf-8
+
+'''
+Author: Da
+Date: 03072016
+'''
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext
