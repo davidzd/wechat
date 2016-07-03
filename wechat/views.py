@@ -10,6 +10,7 @@ from utils import accessToken
 
 # check the service
 @csrf_exempt
+@accessToken
 def entry(request):
     print request.GET.get('echostr')
     if request.method == 'GET':
@@ -25,7 +26,6 @@ def login(request):
     response = HttpResponse("hahahah")
     return response
 
-@accessToken
 def index(request):
     response = HttpResponse("index")
     return response
