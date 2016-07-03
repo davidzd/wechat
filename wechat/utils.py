@@ -108,7 +108,7 @@ def imageMark(path):
     text = u'我喜欢大饼饼哈哈哈哈'
     im = Image.open(path)
     mark = textToImg(text)
-    image = watermark(im, mark, 'center', 0.4)
+    image = watermark(im, mark, 'center', 0.9)
     if image:
         image.save(path)
         return path
