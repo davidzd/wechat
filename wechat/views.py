@@ -8,11 +8,12 @@ Date: 03072016
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext
-import time
 from django.views.decorators.csrf import csrf_exempt
 from utils import checkSignature
 from utils import responseMsg
 from utils import accessToken
+from utils import getToken
+from utils import getUserInfo
 
 # check the service
 @csrf_exempt
@@ -27,12 +28,22 @@ def entry(request):
     print "response \n %s"%response
     return response
 
+# authentication
 def login(request):
     if request.method == 'GET':
-        code = request.GET.code
-    response = HttpResponse(code)
+        code = request.GET.get("code", None)
+    # request for the access_token and refresh token
+    r = getToken(code)
+    if r:
+        # get user info
+        userInfo = getUserInfo(r['access_token'],r['openid'])
+        response = HttpResponse(userInfo)
+        return response
+    # else:
+    response = HttpResponse(u"认证失败")
     return response
 
+# index
 def index(request):
     response = HttpResponse("index")
     return response

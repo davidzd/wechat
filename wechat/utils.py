@@ -17,6 +17,8 @@ from PIL import Image, ImageEnhance, ImageDraw, ImageFont
 
 # init token.
 TOKEN = "weixin"
+appid = "wx4a33e66972710919"
+appsecret = "9d3ca01be1e9510e59582d63f753fc3c"
 
 # check signature from wechat server.
 def checkSignature(request):
@@ -91,7 +93,7 @@ def encodeurl(url):
 def accessToken(func):
     def accessToken(request):
         url = "https://api.weixin.qq.com/cgi-bin/token"
-        response = requests.get(url,dict(grant_type="client_credential",appid="wx4a33e66972710919",secret="9d3ca01be1e9510e59582d63f753fc3c")).json()
+        response = requests.get(url,dict(grant_type="client_credential",appid=appid,secret=appsecret)).json()
         ts = int(time.time())
         if 'token' not in request.session or ts-request.session['timeStamp']>=6000:
             request.session['token'] = response['access_token']
@@ -99,6 +101,23 @@ def accessToken(func):
         result = func(request)
         return result
     return accessToken
+
+# get OAUTH2 TOKEN
+def getToken(code, request):
+    url = "https://api.weixin.qq.com/sns/oauth2/access_token"
+    response = requests.get(url,dict(appid=appid, secret=appsecret, code=code, grant_type="authorization_code")).json()
+    if "access_token" in response:
+        return response
+    return None
+
+
+def getUserInfo(token, openid):
+    url = "https://api.weixin.qq.com/sns/userinfo"
+    response = requests.get(url, dict(token=token, openid=openid, lang="zh_CN")).json()
+    if "openid" in response:
+        return response
+    return None
+
 
 # save image
 def saveImage(url):
