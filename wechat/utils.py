@@ -208,3 +208,6 @@ def upload(path, type, token):
 
 # print saveImage("http://mmbiz.qpic.cn/mmbiz/KNgyCFSwIYcKNJr09gTCJ5S9og71Tlo2XvTSn6ByZhPybOfOuE906K7flkxJDoiaB73p6Ga3XrGLGPkvYjpPVsQ/0")
 # print imageMark("../images/WeChat_1467530177.jpeg")
+mark = textToImg('我喜欢大饼饼哈哈哈哈哈')
+print mark
+
