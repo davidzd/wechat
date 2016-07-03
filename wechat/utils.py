@@ -114,7 +114,7 @@ def imageMark(path):
     text = u'我喜欢大饼饼哈哈哈哈'
     im = Image.open(path)
     mark = textToImg(text)
-    image = watermark(im, mark, 'center', 0.9)
+    image = watermark(im, mark, 'right_bottom', 0.9)
     if image:
         image.save(path)
         return path
@@ -207,4 +207,4 @@ def upload(path, type, token):
 
 
 # print saveImage("http://mmbiz.qpic.cn/mmbiz/KNgyCFSwIYcKNJr09gTCJ5S9og71Tlo2XvTSn6ByZhPybOfOuE906K7flkxJDoiaB73p6Ga3XrGLGPkvYjpPVsQ/0")
-# print imageMark("../images/1467476715.61.jpg")
+# print imageMark("../images/WeChat_1467530177.jpeg")
