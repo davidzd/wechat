@@ -47,7 +47,7 @@ def login(request):
         # get user info
         userInfo = getUserInfo(r['access_token'],r['openid'])
         print userInfo
-        return render_to_response('index.html', dict(data=userInfo) )
+        return render_to_response('indexja.html', dict(data=userInfo) )
     # else:
     response = HttpResponse(u"认证失败")
     return response
