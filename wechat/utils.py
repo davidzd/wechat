@@ -103,7 +103,7 @@ def accessToken(func):
     return accessToken
 
 # get OAUTH2 TOKEN
-def getToken(code, request):
+def getToken(code):
     url = "https://api.weixin.qq.com/sns/oauth2/access_token"
     response = requests.get(url,dict(appid=appid, secret=appsecret, code=code, grant_type="authorization_code")).json()
     if "access_token" in response:
