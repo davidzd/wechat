@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>Discount</title>
+    <link rel="stylesheet" href="/static/css/weui.css"/>
+    <link rel="stylesheet" href="/static/css/example.css"/>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-76561663-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body ontouchstart>
+    <div class="container" id="container">
+
+    </div>
+    <script type="text/html" id="tpl_home">
+<div class="hd">
+    <h1 class="page_title">Discount</h1>
+    <p class="page_desc">comes from WeUI</p>
+</div>
+<div class="bd">
+    <div class="weui_grids">
+        <a href="#/cell" class="weui_grid">
+            <div class="weui_grid_icon">
+                <i class="icon icon_cell"></i>
+            </div>
+            <p class="weui_grid_label">
+                个人名片
+            </p>
+        </a>
+        <a href="#/dialog" class="weui_grid">
+            <div class="weui_grid_icon">
+                <i class="icon icon_dialog"></i>
+            </div>
+            <p class="weui_grid_label">
+                澳元汇率
+            </p>
+        </a>
+        <a class="weui_grid">
+            <div class="weui_grid_icon">
+                <i class="icon icon_progress"></i>
+            </div>
+            <p class="weui_grid_label">
+                租房
+            </p>
+        </a>
+        <a href="#/oz_dazhe" class="weui_grid">
+            <div class="weui_grid_icon">
+                <i class="icon icon_cell"></i>
+            </div>
+            <p class="weui_grid_label">
+                OZ Bargin
+            </p>
+        </a>
+        <a class="weui_grid">
+            <div class="weui_grid_icon">
+                <i class="icon icon_article"></i>
+            </div>
+            <p class="weui_grid_label">
+                Article
+            </p>
+        </a>
+        <a class="weui_grid">
+            <div class="weui_grid_icon">
+                <i class="icon icon_actionSheet"></i>
+            </div>
+            <p class="weui_grid_label">
+                ActionSheet
+            </p>
+        </a>
+        <a class="weui_grid">
+            <div class="weui_grid_icon">
+                <i class="icon icon_search_bar"></i>
+            </div>
+            <p class="weui_grid_label">
+                搜你所爱
+            </p>
+        </a>
+    </div>
+</div>
+
+<!--<a href="javascript:;" class="weui_btn weui_btn_primary">点击展现searchBar</a>-->
+
+    <script type="text/html" id="tpl_cell">
+<div class="hd">
+    <h1 class="page_title">个人名片</h1>
+</div>
+<div class="bd">
+    <div class="weui_cells_title">简要个人信息</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>省份</p>
+            </div>
+            <div class="weui_cell_ft">{{ data.province }}</div>
+        </div>
+    </div>
+
+
+
+    <div class="weui_cells_title">上传</div>
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="weui_uploader">
+                    <div class="weui_uploader_hd weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">图片上传</div>
+                        <div class="weui_cell_ft">0/2</div>
+                    </div>
+                    <div class="weui_uploader_bd">
+                        <ul class="weui_uploader_files">
+                            <li class="weui_uploader_file" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
+                            <li class="weui_uploader_file" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
+                            <li class="weui_uploader_file" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
+                            <li class="weui_uploader_file weui_uploader_status" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)">
+                                <div class="weui_uploader_status_content">
+                                    <i class="weui_icon_warn"></i>
+                                </div>
+                            </li>
+                            <li class="weui_uploader_file weui_uploader_status" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)">
+                                <div class="weui_uploader_status_content">50%</div>
+                            </li>
+                        </ul>
+                        <div class="weui_uploader_input_wrp">
+                            <input class="weui_uploader_input" type="file" accept="image/*" multiple />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weui_btn_area">
+        <a class="weui_btn weui_btn_primary" href="#/" id="showTooltips">返回</a>
+    </div>
+</div>
+</script>
+
+
+
+
+
+
+    <!--<a href="javascript:;" class="weui_btn weui_btn_primary">点击展现searchBar</a>-->
+    <script type="text/html" id="tpl_dialog">
+<div class="hd">
+    <h1 class="page_title">银行汇率</h1>
+</div>
+<div class="bd">
+    <div class="weui_cells_title">澳元汇率</div>
+    <div class="weui_cells weui_cells_access">
+    {% for item in rates %}
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><img src="/static/images/icon_list.jpg" alt="" style="width:20px;margin-right:5px;display:block"></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>{{ item.bank_name }}</p>
+            </div>
+            <div class="weui_cell_ft">{{ item.exchange_rate }}</div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <div class="weui_cells_tips">来源,点击连接</div>
+    <div class="weui_btn_area">
+        <a class="weui_btn weui_btn_primary" href="#/" id="showTooltips">返回</a>
+    </div>
+</div>
+</script>
+
+    <!--<a href="javascript:;" class="weui_btn weui_btn_primary">点击展现searchBar</a>-->
+<script type="text/html" id="oz_dazhe">
+<div class="hd">
+    <h1 class="page_title">OZ Bargin</h1>
+</div>
+<div class="bd">
+    <div class="weui_cells_title">comes from oz_bargin</div>
+    <div class="weui_cells weui_cells_access">
+    {% for item in ozdiscounts %}
+        <a class="weui_cell" href="{{ item.dis_url }}">
+            <div class="weui_cell_hd"><img src="/static/images/icon_list.jpg" alt="" style="width:20px;margin-right:5px;display:block"></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>{{ item.dis_title }}</p>
+            </div>
+            <div class="weui_cell_ft"></div>
+        </a>
+    {% endfor %}
+    </div>
+
+    <div class="weui_cells_tips">click to find details</div>
+    <div class="weui_btn_area">
+        <a class="weui_btn weui_btn_primary" href="#/" id="showTooltips">返回</a>
+    </div>
+</div>
+</script>
+
+
+
+    <script type="text/html" id="tpl_searchbar">
+<div class="hd">
+    <h1 class="page_title">searchBar</h1>
+</div>
+<div class="bd">
+    <!--<a href="javascript:;" class="weui_btn weui_btn_primary">点击展现searchBar</a>-->
+    <div class="weui_search_bar" id="search_bar">
+        <form class="weui_search_outer">
+            <div class="weui_search_inner">
+                <i class="weui_icon_search"></i>
+                <input type="search" class="weui_search_input" id="search_input" placeholder="搜索" required/>
+                <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
+            </div>
+            <label for="search_input" class="weui_search_text" id="search_text">
+                <i class="weui_icon_search"></i>
+                <span>搜索</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui_search_cancel" id="search_cancel">取消</a>
+    </div>
+    <div class="weui_cells weui_cells_access search_show" id="search_show">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>实时搜索文本</p>
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>实时搜索文本</p>
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>实时搜索文本</p>
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>实时搜索文本</p>
+            </div>
+        </div>
+    </div>
+</div>
+</script>
+    <script src="/static/js/zepto.min.js"></script>
+    <script src="/static/js/router.min.js"></script>
+    <script src="/static/js/example.js"></script>
+</body>
+</html>
+
+{#<div class="weui_cells_title">带图标、说明的列表项</div>#}
+{#    <div class="weui_cells">#}
+{#        <div class="weui_cell">#}
+{#            <div class="weui_cell_hd"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" style="width:20px;margin-right:5px;display:block"></div>#}
+{#            <div class="weui_cell_bd weui_cell_primary">#}
+{#                <p>标题文字</p>#}
+{#            </div>#}
+{#            <div class="weui_cell_ft">说明文字</div>#}
+{#        </div>#}
+{#        <div class="weui_cell">#}
+{#            <div class="weui_cell_hd"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" style="width:20px;margin-right:5px;display:block"></div>#}
+{#            <div class="weui_cell_bd weui_cell_primary">#}
+{#                <p>标题文字</p>#}
+{#            </div>#}
+{#            <div class="weui_cell_ft">说明文字</div>#}
+{#        </div>#}
+{#    </div>#}

@@ -20,7 +20,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,6 +31,7 @@ SECRET_KEY = '@mi$l7yl#gotarv6*1ik-x%&v#_uh%vcmx@evow!tz9h$gp!z0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'wechat',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -62,7 +64,7 @@ ROOT_URLCONF = 'weixin.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,8 +123,23 @@ USE_L10N = True
 
 USE_TZ = True
 
+LANG = "zh_CN.utf8"
+LC_ALL = "zh_CN.UTF-8"
+LC_LANG = "zh_CN.UTF-8"
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+STATICFILES_DIRS = (
+    os.path.join(os.path.dirname(__file__), '../static/').replace('\\', '/'),
+)
+
+# template root
+TEMPLATE_DIRS = (
+os.path.join(os.path.dirname(__file__), '../templates/').replace('\\', '/'),
+)
+

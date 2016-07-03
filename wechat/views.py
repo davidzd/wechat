@@ -5,7 +5,7 @@ Author: Da
 Date: 03072016
 '''
 
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
@@ -15,10 +15,14 @@ from utils import accessToken
 from utils import getToken
 from utils import getUserInfo
 
-# check the service
 @csrf_exempt
 @accessToken
 def entry(request):
+    '''
+    check the service
+    :param request:
+    :return:
+    '''
     if request.method == 'GET':
         response = HttpResponse(checkSignature(request),content_type="text/plain")
     elif request.method == 'POST':
@@ -28,8 +32,12 @@ def entry(request):
     print "response \n %s"%response
     return response
 
-# authentication
 def login(request):
+    '''
+    authentication
+    :param request:
+    :return:
+    '''
     if request.method == 'GET':
         code = request.GET.get("code", None)
     # request for the access_token and refresh token
@@ -39,13 +47,15 @@ def login(request):
         # get user info
         userInfo = getUserInfo(r['access_token'],r['openid'])
         print userInfo
-        response = HttpResponse(str(userInfo))
-        return response
+        return render_to_response('index.html', dict(data=userInfo) )
     # else:
     response = HttpResponse(u"认证失败")
     return response
 
-# index
 def index(request):
-    response = HttpResponse("index")
-    return response
+    '''
+    render index
+    :param request:
+    :return:
+    '''
+    return render_to_response('index.html', '')
