@@ -1,4 +1,4 @@
-#coding: utf-8
+# coding: utf-8
 import hashlib
 from xml.etree import ElementTree
 from django.utils.encoding import *
