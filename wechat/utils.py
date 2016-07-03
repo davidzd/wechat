@@ -231,6 +231,6 @@ def upload(path, type, token):
 # print imageMark("../images/WeChat_1467530177.jpeg")
 # mark = textToImg('我喜欢大饼饼哈哈哈哈哈')
 # print mark
-# print encodeurl("http://130.56.254.160/wechat/login")
+# print encodeurl("http://www.misspiepie.com/wechat/login")
 
-print getUserInfo("qaX71zFkvrKwH9zWFx1bq1FHq1NzRz4kwVV7ttL2nwIn-SBAuEbIMwrMZludj0bKKoHf34FQnRh69aU8F8LJ96L9LDx6RQWPAyKmBcMiAgo",'oa6cGt4PrUC9BSWuK09IvehmgcNU')
+# print getUserInfo("qaX71zFkvrKwH9zWFx1bq1FHq1NzRz4kwVV7ttL2nwIn-SBAuEbIMwrMZludj0bKKoHf34FQnRh69aU8F8LJ96L9LDx6RQWPAyKmBcMiAgo",'oa6cGt4PrUC9BSWuK09IvehmgcNU')

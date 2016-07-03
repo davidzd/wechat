@@ -39,7 +39,7 @@ def login(request):
         # get user info
         userInfo = getUserInfo(r['access_token'],r['openid'])
         print userInfo
-        response = HttpResponse(userInfo)
+        response = HttpResponse(str(userInfo))
         return response
     # else:
     response = HttpResponse(u"认证失败")
