@@ -33,6 +33,7 @@ def login(request):
     if request.method == 'GET':
         code = request.GET.get("code", None)
     # request for the access_token and refresh token
+    print "code: %s"%code
     r = getToken(code)
     if r:
         # get user info
