@@ -22,8 +22,8 @@
     </div>
     <script type="text/html" id="tpl_home">
 <div class="hd">
-    <h1 class="page_title">Discount</h1>
-    <p class="page_desc">Da Zhang</p>
+    <h1 class="page_title">你好, {{ data.nickname }}</h1>
+    <p class="page_desc">Author: Da Zhang</p>
 </div>
 <div class="bd">
     <div class="weui_grids">
@@ -187,7 +187,7 @@
 <div class="bd">
     <div class="weui_cells_title">comes from oz_bargin</div>
     <div class="weui_cells weui_cells_access">
-    {% for item in ozdiscounts %}
+        {% for item in discounts %}
         <a class="weui_cell" href="{{ item.dis_url }}">
             <div class="weui_cell_hd"><img src="/static/images/icon_list.jpg" alt="" style="width:20px;margin-right:5px;display:block"></div>
             <div class="weui_cell_bd weui_cell_primary">

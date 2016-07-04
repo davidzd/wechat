@@ -14,6 +14,9 @@ from utils import responseMsg
 from utils import accessToken
 from utils import getToken
 from utils import getUserInfo
+from models import Discount_Info
+from models import Visitor
+from models import Rate
 
 @csrf_exempt
 @accessToken
@@ -46,8 +49,8 @@ def login(request):
     if r:
         # get user info
         userInfo = getUserInfo(r['access_token'],r['openid'])
-        print userInfo
-        return render_to_response('index.html', dict(data=userInfo) )
+        discounts = Discount_Info.objects.filter(lang=0).order_by('-dis_id')
+        return render_to_response('index.html', dict(data=userInfo, discounts=discounts) )
     # else:
     response = HttpResponse(u"认证失败")
     return response
@@ -58,8 +61,9 @@ def index(request):
     :param request:
     :return:
     '''
+    discounts = Discount_Info.objects.filter(lang=0).order_by('-dis_id')
     ha = {u'province': u'', u'openid': u'oa6cGt4PrUC9BSWuK09IvehmgcNU',
           u'headimgurl': u'http://wx.qlogo.cn/mmopen/PiajxSqBRaELwKcgGMFpnGn4WNVzPicUMoOuI0foZ06uozNK2pC4Bu96VibfyRDzvrkMY2kdSPEMcj97McG2J4a5A/0',
           u'language': u'zh_CN', u'city': u'', u'country': '\xe4\xb8\xad\xe5\x9b\xbd', u'sex': 1, u'privilege': [],
           u'nickname': '\xe5\xb0\x8f\xe5\x93\x92'}
-    return render_to_response('index.html', dict(data=ha))
+    return render_to_response('index.html', dict(data=ha, discounts=discounts))
