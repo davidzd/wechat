@@ -49,13 +49,14 @@ def responseMsg(request):
     if postStr:
         msg = xmlContent2Dic(postStr)
         msg['token'] = request.session['token']
+        msg['MediaId'] = "Xd2kobaqZAy_Hb1Y-JylTEoxhY-CduAqJVFDTJp1S0SE0f-Uctcj9I5PuZM1hPkA"
         if msg['MsgType']:
             if msg['MsgType'] == 'event':
                 resultStr = handleEvent(msg)
             elif msg['MsgType'] == 'image':
                 resultStr = handleImage(msg)
             else:
-                resultStr = Message(type="text", msg=msg)
+                resultStr = Message(type="image", msg=msg, text=u'我就是试着玩的,没想到你还真关注了.')
         else:
             resultStr = Message(type="text",msg=msg)
         return resultStr
