@@ -82,7 +82,7 @@ def handleImage(msg):
 # handler for Event
 def handleEvent(msg):
     if msg['Event'] == 'subscribe':
-        resultStr=Message(type="text",msg=msg,text=u'我就是试着玩的,没想到你还真关注了.')
+        resultStr=Message(type="text",msg=msg,text=u'只要你跟我说话,我就给你一个神奇的链接.')
     return resultStr
 
 # to asc2
