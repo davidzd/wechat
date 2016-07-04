@@ -49,7 +49,7 @@ def login(request):
     if r:
         # get user info
         userInfo = getUserInfo(r['access_token'],r['openid'])
-        discounts = Discount_Info.objects.filter(lang=0).order_by('-dis_id')
+        discounts = Discount_Info.objects.filter(lang=0).order_by('-dis_id')[:15]
         rates = Rate.objects.all()
         # store user info
         is_exist = Visitor.objects.filter(openid=userInfo['openid'])
