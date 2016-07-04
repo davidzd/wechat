@@ -50,7 +50,19 @@ def login(request):
         # get user info
         userInfo = getUserInfo(r['access_token'],r['openid'])
         discounts = Discount_Info.objects.filter(lang=0).order_by('-dis_id')
-        return render_to_response('index.html', dict(data=userInfo, discounts=discounts) )
+        rates = Rate.objects.all()
+        # store user info
+        is_exist = Visitor.objects.get(openid=userInfo['openid'])
+        if not is_exist:
+            user = Visitor()
+        # 存在即更新
+        else:
+            user = is_exist
+        for key in user.__dict__:
+            if key in userInfo:
+                setattr(user, key, userInfo[key])
+        user.save()
+        return render_to_response('index.html', dict(data=userInfo, discounts=discounts, rates=rates) )
     # else:
     response = HttpResponse(u"认证失败")
     return response
@@ -66,4 +78,16 @@ def index(request):
           u'headimgurl': u'http://wx.qlogo.cn/mmopen/PiajxSqBRaELwKcgGMFpnGn4WNVzPicUMoOuI0foZ06uozNK2pC4Bu96VibfyRDzvrkMY2kdSPEMcj97McG2J4a5A/0',
           u'language': u'zh_CN', u'city': u'', u'country': '\xe4\xb8\xad\xe5\x9b\xbd', u'sex': 1, u'privilege': [],
           u'nickname': '\xe5\xb0\x8f\xe5\x93\x92'}
-    return render_to_response('index.html', dict(data=ha, discounts=discounts))
+
+    is_exist = Visitor.objects.get(openid=ha['openid'])
+    if not is_exist:
+        user = Visitor()
+    # 存在即更新
+    else:
+        user = is_exist
+    for key in user.__dict__:
+        if key in ha:
+            setattr(user, key, ha[key])
+    user.save()
+    rates = Rate.objects.all()
+    return render_to_response('index.html', dict(data=ha,rates=rates , discounts=discounts))

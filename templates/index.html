@@ -35,6 +35,14 @@
                 个人名片
             </p>
         </a>
+        <a href="#/oz_dazhe" class="weui_grid">
+            <div class="weui_grid_icon">
+                <i class="icon icon_cell"></i>
+            </div>
+            <p class="weui_grid_label">
+                打折信息
+            </p>
+        </a>
         <a href="#/dialog" class="weui_grid">
             <div class="weui_grid_icon">
                 <i class="icon icon_dialog"></i>
@@ -49,14 +57,6 @@
             </div>
             <p class="weui_grid_label">
                 租房
-            </p>
-        </a>
-        <a href="#/oz_dazhe" class="weui_grid">
-            <div class="weui_grid_icon">
-                <i class="icon icon_cell"></i>
-            </div>
-            <p class="weui_grid_label">
-                OZ Bargin
             </p>
         </a>
         <a class="weui_grid">
@@ -85,10 +85,10 @@
         </a>
     </div>
 </div>
-
+</script>
 <!--<a href="javascript:;" class="weui_btn weui_btn_primary">点击展现searchBar</a>-->
 
-    <script type="text/html" id="tpl_cell">
+<script type="text/html" id="tpl_cell">
 <div class="hd">
     <h1 class="page_title">个人名片</h1>
 </div>
@@ -148,8 +148,30 @@
 </div>
 </script>
 
+    <script type="text/html" id="oz_dazhe">
+<div class="hd">
+    <h1 class="page_title">折扣信息</h1>
+</div>
+<div class="bd">
+    <div class="weui_cells_title">comes from oz_bargin</div>
+    <div class="weui_cells weui_cells_access">
+        {% for item in discounts %}
+        <a class="weui_cell" href="{{ item.dis_url }}">
+            <div class="weui_cell_hd"><img src="/static/images/icon_list.jpg" alt="" style="width:20px;margin-right:5px;display:block"></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>{{ item.dis_title }}</p>
+            </div>
+            <div class="weui_cell_ft"></div>
+        </a>
+    {% endfor %}
+    </div>
 
-
+    <div class="weui_cells_tips">click to find details</div>
+    <div class="weui_btn_area">
+        <a class="weui_btn weui_btn_primary" href="#/" id="showTooltips">返回</a>
+    </div>
+</div>
+</script>
 
 
 
@@ -180,32 +202,6 @@
 </script>
 
     <!--<a href="javascript:;" class="weui_btn weui_btn_primary">点击展现searchBar</a>-->
-<script type="text/html" id="oz_dazhe">
-<div class="hd">
-    <h1 class="page_title">OZ Bargin</h1>
-</div>
-<div class="bd">
-    <div class="weui_cells_title">comes from oz_bargin</div>
-    <div class="weui_cells weui_cells_access">
-        {% for item in discounts %}
-        <a class="weui_cell" href="{{ item.dis_url }}">
-            <div class="weui_cell_hd"><img src="/static/images/icon_list.jpg" alt="" style="width:20px;margin-right:5px;display:block"></div>
-            <div class="weui_cell_bd weui_cell_primary">
-                <p>{{ item.dis_title }}</p>
-            </div>
-            <div class="weui_cell_ft"></div>
-        </a>
-    {% endfor %}
-    </div>
-
-    <div class="weui_cells_tips">click to find details</div>
-    <div class="weui_btn_area">
-        <a class="weui_btn weui_btn_primary" href="#/" id="showTooltips">返回</a>
-    </div>
-</div>
-</script>
-
-
 
     <script type="text/html" id="tpl_searchbar">
 <div class="hd">
