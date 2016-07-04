@@ -74,17 +74,17 @@ def index(request):
     :return:
     '''
     discounts = Discount_Info.objects.filter(lang=0).order_by('-dis_id')
-    ha = {u'province': u'', u'openid': u'oa6cGt4PrUC9BSWuK09IvehmgcNU',
+    ha = {u'province': u'', u'openid': u'oa6cGt4PrUC9BSWuK09IvehmgcNUaa',
           u'headimgurl': u'http://wx.qlogo.cn/mmopen/PiajxSqBRaELwKcgGMFpnGn4WNVzPicUMoOuI0foZ06uozNK2pC4Bu96VibfyRDzvrkMY2kdSPEMcj97McG2J4a5A/0',
           u'language': u'zh_CN', u'city': u'', u'country': '\xe4\xb8\xad\xe5\x9b\xbd', u'sex': 1, u'privilege': [],
           u'nickname': '\xe5\xb0\x8f\xe5\x93\x92'}
 
-    is_exist = Visitor.objects.get(openid=ha['openid'])
+    is_exist = Visitor.objects.filter(openid=ha['openid'])
     if not is_exist:
         user = Visitor()
     # 存在即更新
     else:
-        user = is_exist
+        user = is_exist[0]
     for key in user.__dict__:
         if key in ha:
             setattr(user, key, ha[key])
