@@ -56,7 +56,7 @@ def responseMsg(request):
             elif msg['MsgType'] == 'image':
                 resultStr = handleImage(msg)
             else:
-                resultStr = Message(type="image", msg=msg, text=u'我就是试着玩的,没想到你还真关注了.')
+                resultStr = Message(type="image", msg=msg, text=u'只要你跟我说话,我就给你一个神奇的链接.')
         else:
             resultStr = Message(type="text",msg=msg)
         return resultStr
