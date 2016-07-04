@@ -52,12 +52,12 @@ def login(request):
         discounts = Discount_Info.objects.filter(lang=0).order_by('-dis_id')
         rates = Rate.objects.all()
         # store user info
-        is_exist = Visitor.objects.get(openid=userInfo['openid'])
+        is_exist = Visitor.objects.filter(openid=userInfo['openid'])
         if not is_exist:
             user = Visitor()
         # 存在即更新
         else:
-            user = is_exist
+            user = is_exist[0]
         for key in user.__dict__:
             if key in userInfo:
                 setattr(user, key, userInfo[key])
