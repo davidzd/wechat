@@ -239,7 +239,7 @@ $(function () {
                         for (item in data.result) {
                             console.log(data.result[item])
                             for (var k in data.result[item]) {
-                                result += "<div class=\"weui_cell\"><div class=\"weui_cell_bd weui_cell_primary\"> <a href="+data.result[item][k]+"> <p>"+k+"</p></a></div></div>"
+                                result += "<div class=\"weui_cell\"><div class=\"weui_cell_bd weui_cell_primary\"> <a class=\"weui_cell\" href="+data.result[item][k]+"> <p>"+k+"</p></a></div></div>"
                             }
                         }
                         $searchShow.html(result)
