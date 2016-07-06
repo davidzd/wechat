@@ -51,6 +51,7 @@ def login(request):
         # get user info
         userInfo = getUserInfo(r['access_token'],r['openid'])
         discounts = Discount_Info.objects.filter(lang=0).order_by('-dis_id')[:15]
+        ozdiscounts = Discount_Info.objects.filter(lang=1).order_by('-dis_id')[:15]
         rates = Rate.objects.all()
         # store user info
         is_exist = Visitor.objects.filter(openid=userInfo['openid'])
@@ -63,7 +64,7 @@ def login(request):
             if key in userInfo:
                 setattr(user, key, userInfo[key])
         user.save()
-        return render_to_response('index.html', dict(data=userInfo, discounts=discounts, rates=rates) )
+        return render_to_response('index.html', dict(data=userInfo, discounts=discounts, rates=rates, ozdiscounts=ozdiscounts) )
     # else:
     response = HttpResponse(u"认证失败")
     return response

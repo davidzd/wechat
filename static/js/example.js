@@ -24,12 +24,12 @@ $(function () {
         }
     };
 
-    // oz_dazhe
+    // oz_bargin
     var button = {
-        url: '/oz_dazhe',
+        url: '/oz_bargin',
         className: 'cell',
         render: function () {
-            return $('#oz_dazhe').html();
+            return $('#oz_bargin').html();
         }
     };
 
