@@ -56,7 +56,8 @@ def responseMsg(request):
             elif msg['MsgType'] == 'image':
                 resultStr = handleImage(msg)
             else:
-                resultStr = Message(type="image", msg=msg, text=u'只要你跟我说话,我就给你一个神奇的链接.')
+                # resultStr = Message(type="image", msg=msg, text=u'只要你跟我说话,我就给你一个神奇的链接.')
+                resultStr = Message(type="text", msg=msg, text=simsim(msg['Content']))
         else:
             resultStr = Message(type="text",msg=msg)
         return resultStr
@@ -225,8 +226,13 @@ def upload(path, type, token):
     print "UPLOAD response \n %s"%response.json()
     return response.json()
 
-
-
+# simsim
+def simsim(msg):
+    trial = "a4328936-8cef-4baf-9c42-0f0b25b295f9"
+    url = "http://sandbox.api.simsimi.com/request.p"
+    response = requests.get(url,dict(key=trial,lc="zh",ft=0.0,text=msg))
+    response = json.loads(response.content)['response']
+    return response
 
 
 # print saveImage("http://mmbiz.qpic.cn/mmbiz/KNgyCFSwIYcKNJr09gTCJ5S9og71Tlo2XvTSn6ByZhPybOfOuE906K7flkxJDoiaB73p6Ga3XrGLGPkvYjpPVsQ/0")
@@ -236,3 +242,4 @@ def upload(path, type, token):
 # print encodeurl("http://www.misspiepie.com/wechat/login")
 
 # print getUserInfo("qaX71zFkvrKwH9zWFx1bq1FHq1NzRz4kwVV7ttL2nwIn-SBAuEbIMwrMZludj0bKKoHf34FQnRh69aU8F8LJ96L9LDx6RQWPAyKmBcMiAgo",'oa6cGt4PrUC9BSWuK09IvehmgcNU')
+# print simsim("你是什么人")
