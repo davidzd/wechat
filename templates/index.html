@@ -224,29 +224,29 @@
 </div>
 </script>
 
-    <script type="text/html" id="oz_bargin">
-<div class="hd">
-    <h1 class="page_title">OZ Bargin</h1>
-</div>
-<div class="bd">
-    <div class="weui_cells_title">comes from oz_bargin</div>
-    <div class="weui_cells weui_cells_access">
-    {% for item in ozdiscounts %}
-        <a class="weui_cell" href="{{ item.dis_url }}">
-            <div class="weui_cell_hd"><img src="/static/images/icon_list.jpg" alt="" style="width:20px;margin-right:5px;display:block"></div>
-            <div class="weui_cell_bd weui_cell_primary">
-                <p>{{ item.dis_title }}</p>
-            </div>
-            <div class="weui_cell_ft"></div>
-        </a>
-    {% endfor %}
+<script type="text/html" id="oz_bargin">
+    <div class="hd">
+        <h1 class="page_title">OZ Bargin</h1>
     </div>
+    <div class="bd">
+        <div class="weui_cells_title">comes from oz_bargin</div>
+        <div class="weui_cells weui_cells_access">
+        {% for item in ozdiscounts %}
+            <a class="weui_cell" href="{{ item.dis_url }}">
+                <div class="weui_cell_hd"><img src="/static/images/icon_list.jpg" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>{{ item.dis_title }}</p>
+                </div>
+                <div class="weui_cell_ft"></div>
+            </a>
+        {% endfor %}
+        </div>
 
-    <div class="weui_cells_tips">click to find details</div>
-    <div class="weui_btn_area">
-        <a class="weui_btn weui_btn_primary" href="#/" id="showTooltips">返回</a>
+        <div class="weui_cells_tips">click to find details</div>
+        <div class="weui_btn_area">
+            <a class="weui_btn weui_btn_primary" href="#/" id="showTooltips">返回</a>
+        </div>
     </div>
-</div>
 </script>
 
     <script src="/static/js/zepto.min.js"></script>

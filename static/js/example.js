@@ -15,15 +15,6 @@ $(function () {
         }
     };
 
-    // button
-    var button = {
-        url: '/button',
-        className: 'button',
-        render: function () {
-            return $('#tpl_button').html();
-        }
-    };
-
     // oz_bargin
     var button = {
         url: '/oz_bargin',
@@ -34,7 +25,7 @@ $(function () {
     };
 
     // oz_bargin
-    var button = {
+    var bargin = {
         url: '/oz_dazhe',
         className: 'cell',
         render: function () {
@@ -269,6 +260,7 @@ $(function () {
 
     router.push(home)
         .push(button)
+        .push(bargin)
         .push(cell)
         .push(toast)
         .push(dialog)
