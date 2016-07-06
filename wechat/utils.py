@@ -83,7 +83,7 @@ def handleImage(msg):
 # handler for Event
 def handleEvent(msg):
     if msg['Event'] == 'subscribe':
-        resultStr=Message(type="text",msg=msg,text=u'只要你跟我说话,我就给你一个神奇的链接.')
+        resultStr=Message(type="text",msg=msg,text=u'只要你跟我"打折",我就给你一个神奇的链接. 或者你给我发图片,我就帮你加个美美的水印如何?')
     return resultStr
 
 # to asc2
@@ -234,6 +234,12 @@ def simsim(msg):
     response = json.loads(response.content)['response']
     return response
 
+def simsimteach(req, res):
+    trial = "a4328936-8cef-4baf-9c42-0f0b25b295f9"
+    url = "http://sandbox.api.simsimi.com/teach"
+    response = requests.post(url,dict(key=trial,lc="zh",req=req,res=res))
+    response = json.loads(response.content)
+    return response
 
 # print saveImage("http://mmbiz.qpic.cn/mmbiz/KNgyCFSwIYcKNJr09gTCJ5S9og71Tlo2XvTSn6ByZhPybOfOuE906K7flkxJDoiaB73p6Ga3XrGLGPkvYjpPVsQ/0")
 # print imageMark("../images/WeChat_1467530177.jpeg")
@@ -242,4 +248,4 @@ def simsim(msg):
 # print encodeurl("http://www.misspiepie.com/wechat/login")
 
 # print getUserInfo("qaX71zFkvrKwH9zWFx1bq1FHq1NzRz4kwVV7ttL2nwIn-SBAuEbIMwrMZludj0bKKoHf34FQnRh69aU8F8LJ96L9LDx6RQWPAyKmBcMiAgo",'oa6cGt4PrUC9BSWuK09IvehmgcNU')
-# print simsim("你是什么人")
+# print simsimteach("三件事","哇,我听过这个超牛逼的团队")
