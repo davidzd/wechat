@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^wechat', include('wechat.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', wechat.views.index),
+    url(r'^search$', wechat.views.search),
 ]

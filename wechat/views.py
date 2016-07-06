@@ -17,6 +17,7 @@ from utils import getUserInfo
 from models import Discount_Info
 from models import Visitor
 from models import Rate
+import json
 
 @csrf_exempt
 @accessToken
@@ -91,3 +92,24 @@ def index(request):
     user.save()
     rates = Rate.objects.all()
     return render_to_response('index.html', dict(data=ha,rates=rates , discounts=discounts))
+
+def search(request):
+    '''
+    :param request:
+    :return: search result
+    '''
+    result_list = list()
+    results = dict()
+    if request.method == "GET":
+        keyword = request.GET.get('keyword', None)
+        if keyword:
+            result = Discount_Info.objects.filter(dis_title__contains=keyword).order_by('-dis_id')[:10]
+            for i in result:
+                item = dict()
+                item[i.dis_title] = i.dis_url
+                result_list.append(item)
+            results['result'] = result_list
+    results = json.dumps(results)
+    return HttpResponse(results)
+
+

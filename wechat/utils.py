@@ -226,7 +226,7 @@ def upload(path, type, token):
     print "UPLOAD response \n %s"%response.json()
     return response.json()
 
-# simsim
+# simsimi
 def simsim(msg):
     trial = "a4328936-8cef-4baf-9c42-0f0b25b295f9"
     url = "http://sandbox.api.simsimi.com/request.p"
@@ -234,6 +234,7 @@ def simsim(msg):
     response = json.loads(response.content)['response']
     return response
 
+# sim
 def simsimteach(req, res):
     trial = "a4328936-8cef-4baf-9c42-0f0b25b295f9"
     url = "http://sandbox.api.simsimi.com/teach"

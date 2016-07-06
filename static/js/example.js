@@ -233,6 +233,18 @@ $(function () {
                 var $searchShow = $("#search_show");
                 if ($(this).val()) {
                     $searchShow.show();
+                    var result = "<div class=\"weui_cell\"><div class=\"weui_cell_bd weui_cell_primary\"> <p></p> </div> </div>"
+                    $.getJSON('/search?keyword='+$(this).val(), function(data){
+                        // data is a js object, such as Object or Array
+                        for (item in data.result) {
+                            console.log(data.result[item])
+                            for (var k in data.result[item]) {
+                                result += "<div class=\"weui_cell\"><div class=\"weui_cell_bd weui_cell_primary\"> <a href="+data.result[item][k]+"> <p>"+k+"</p></a></div></div>"
+                            }
+                        }
+                        $searchShow.html(result)
+
+})
                 } else {
                     $searchShow.hide();
                 }
