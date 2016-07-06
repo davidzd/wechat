@@ -33,6 +33,15 @@ $(function () {
         }
     };
 
+    // oz_bargin
+    var button = {
+        url: '/oz_dazhe',
+        className: 'cell',
+        render: function () {
+            return $('#oz_dazhe').html();
+        }
+    };
+
     // cell
     var cell = {
         url: '/cell',
