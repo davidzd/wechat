@@ -16,6 +16,10 @@ class Discount_Info(models.Model):
     addtime = models.CharField(max_length=32, null=False, default='')
     # language
     lang = models.IntegerField(max_length=32, null=False, default=0)
+
+    def __repr__(self):
+        return self.dis_title
+
     class Meta(object):
         db_table = 'discount_info'
         app_label = 'wechat'

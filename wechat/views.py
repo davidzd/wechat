@@ -92,7 +92,8 @@ def index(request):
             setattr(user, key, ha[key])
     user.save()
     rates = Rate.objects.all()
-    return render_to_response('index.html', dict(data=ha,rates=rates , discounts=discounts))
+    # return render_to_response('index.html', dict(data=ha,rates=rates , discounts=discounts))
+    return render_to_response('cleaning.html')
 
 def search(request):
     '''
