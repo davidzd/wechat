@@ -14,6 +14,7 @@ import requests
 import time
 import json
 from PIL import Image, ImageEnhance, ImageDraw, ImageFont
+import urllib2
 
 # init token.
 TOKEN = "weixin"
@@ -39,6 +40,23 @@ def checkSignature(request):
     else:
         return None
 
+
+def checkTicket(date):
+    url = 'http://www.12306.cn/opn/lcxxcx/query?' \
+          'purpose_codes=ADULT&queryDate='+date+'&' \
+          'from_station=BJP&to_station=CCT'
+    trains = json.loads(urllib2.urlopen(url).read())['data']['datas']
+    for t in trains:
+        if t['train_no'] == "240000G38306" or ['train_no'] == "240000G38107":
+            if t["gg_num"] != "--" or \
+               t["gr_num"] != "--" or\
+               t["qt_num"] != "--" or\
+               t["ze_num"] != "--":
+                return True
+    return False
+
+# print checkTicket('2016-09-01')
+
 # response to the msg
 def responseMsg(request):
     postContent = request.body
@@ -57,7 +75,16 @@ def responseMsg(request):
                 resultStr = handleImage(msg)
             else:
                 # resultStr = Message(type="image", msg=msg, text=u'只要你跟我说话,我就给你一个神奇的链接.')
-                resultStr = Message(type="text", msg=msg, text='woca')
+                # 有没有火车票在此一举
+                r1 = '2016-09-15-----------%s'
+                r2 = '2016-10-01-----------%s'
+                if checkTicket('2016-09-15'):
+                    r1%('有票啦!!!!!!!!')
+                if checkTicket('2016-09-15'):
+                    r2%('有票啦!!!!!!!!')
+                r1%('没票...')
+                r2%('没票...')
+                resultStr = Message(type="text", msg=msg, text=r1+r2)
         else:
             resultStr = Message(type="text",msg=msg)
         return resultStr
