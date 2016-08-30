@@ -81,7 +81,9 @@ def responseMsg(request):
                     r2 = '2016-10-01-----------有票啦!!!!!!!!\n'
                 r1 = '2016-09-15-----------没票...'
                 r2 = '2016-10-01-----------没票...'
-                resultStr = Message(type="text", msg=msg, text=r1+r2)
+                text = r1+r2
+                print text
+                resultStr = Message(type="text", msg=msg, text=text)
         else:
             resultStr = Message(type="text",msg=msg)
         return resultStr
