@@ -36,6 +36,26 @@ def entry(request):
     print "response \n %s"%response
     return response
 
+def ticketExist(request):
+    '''
+    :param request:
+    :return:
+    '''
+    response = "Error "
+    if request.method == 'GET':
+        request.body = '''<xml><ToUserName><![CDATA[gh_a20a55fc187d]]></ToUserName>
+                        <FromUserName><![CDATA[oa6cGt4PrUC9BSWuK09IvehmgcNU]]></FromUserName>
+                        <CreateTime>1472537501</CreateTime>
+                        <MsgType><![CDATA[text]]></MsgType>
+                        <Content><![CDATA[你大爷]]></Content>
+                        <MsgId>6324500409338106550</MsgId>
+                        </xml>'''
+        if request.GET.get('password') =='tamademeiyoupiao':
+            response = HttpResponse(responseMsg(request), content_type="application/xml")
+
+    return response
+
+
 def login(request):
     '''
     authentication
