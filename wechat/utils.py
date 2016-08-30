@@ -79,8 +79,8 @@ def responseMsg(request):
                     r1 = '2016-09-15-----------EXIST!!!!!!!!\n'
                 if checkTicket('2016-09-15'):
                     r2 = '2016-10-01-----------EXIST!!!!!!!!\n'
-                r1 = '2016-09-15-----------NO MORE...'
-                r2 = '2016-10-01-----------NO MORE...'
+                r1 = '2016-09-15-----------NO MORE...\n'
+                r2 = '2016-10-01-----------NO MORE...\n'
                 text = r1+r2
                 print text
                 resultStr = Message(type="text", msg=msg, text=text)
