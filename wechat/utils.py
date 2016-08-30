@@ -76,14 +76,12 @@ def responseMsg(request):
             else:
                 # resultStr = Message(type="image", msg=msg, text=u'只要你跟我说话,我就给你一个神奇的链接.')
                 # 有没有火车票在此一举
-                r1 = '2016-09-15-----------%s'
-                r2 = '2016-10-01-----------%s'
                 if checkTicket('2016-09-15'):
-                    r1%('有票啦!!!!!!!!')
+                    r1 = '2016-09-15-----------%s'%('有票啦!!!!!!!!')
                 if checkTicket('2016-09-15'):
-                    r2%('有票啦!!!!!!!!')
-                r1%('没票...')
-                r2%('没票...')
+                    r2 = '2016-10-01-----------%s'%('有票啦!!!!!!!!')
+                r1 = '2016-09-15-----------%s'%('没票...')
+                r2 = '2016-10-01-----------%s'%('没票...')
                 resultStr = Message(type="text", msg=msg, text=r1+r2)
         else:
             resultStr = Message(type="text",msg=msg)
