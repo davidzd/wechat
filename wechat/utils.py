@@ -43,7 +43,7 @@ def checkSignature(request):
 def responseMsg(request):
     postContent = request.body
     postStr = smart_str(postContent)
-    # post content
+    # post content2
     print postStr
     resultStr = None
     if postStr:
@@ -57,7 +57,7 @@ def responseMsg(request):
                 resultStr = handleImage(msg)
             else:
                 # resultStr = Message(type="image", msg=msg, text=u'只要你跟我说话,我就给你一个神奇的链接.')
-                resultStr = Message(type="text", msg=msg, text=simsim(msg['Content']))
+                resultStr = Message(type="text", msg=msg, text='woca')
         else:
             resultStr = Message(type="text",msg=msg)
         return resultStr
