@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fef2045-3229-4b1f-9345-e6643227383a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/born.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/coreIdea-bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/jackerbon1-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/jackerbon1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/jackerbon2-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/jackerbon2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/jackerbon3-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/jackerbon3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/medias.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/now_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/now_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/recruit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Assets/img/about/sign.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/Assets/css/all_include.css" afterPath="$PROJECT_DIR$/static/Assets/css/all_include.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/cleaning.html" afterPath="$PROJECT_DIR$/templates/cleaning.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wechat/admin.py" afterPath="$PROJECT_DIR$/wechat/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wechat/models.py" afterPath="$PROJECT_DIR$/wechat/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wechat/views.py" afterPath="$PROJECT_DIR$/wechat/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weixin/urls.py" afterPath="$PROJECT_DIR$/weixin/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/about.html" afterPath="$PROJECT_DIR$/templates/about.html" />
     </list>
     <ignored path="weixin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -224,12 +202,9 @@
       <file leaf-file-name="about.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/about.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="48" column="54" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#noscript#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#noscript#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="802">
+              <caret line="70" column="51" selection-start-line="70" selection-start-column="51" selection-end-line="70" selection-end-column="51" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -947,7 +922,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1200" height="1920" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2685665" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1467,12 +1442,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/about.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="54" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#noscript#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#noscript#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="802">
+          <caret line="70" column="51" selection-start-line="70" selection-start-column="51" selection-end-line="70" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>
