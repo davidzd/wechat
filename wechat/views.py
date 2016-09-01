@@ -76,7 +76,7 @@ def index(request):
     :param request:
     :return:
     '''
-    discounts = Discount_Info.objects.filter(lang=0).order_by('-dis_id')[:15]
+    discounts = Discount_Info.objects.filter(lang=0,status=1).order_by('-dis_id')[:15]
     ha = {u'province': u'', u'openid': u'oa6cGt4PrUC9BSWuK09IvehmgcNUaaaa',
           u'headimgurl': u'http://wx.qlogo.cn/mmopen/PiajxSqBRaELwKcgGMFpnGn4WNVzPicUMoOuI0foZ06uozNK2pC4Bu96VibfyRDzvrkMY2kdSPEMcj97McG2J4a5A/0',
           u'language': u'zh_CN', u'city': u'', u'country': '\xe4\xb8\xad\xe5\x9b\xbd', u'sex': 1, u'privilege': [],
@@ -95,6 +95,23 @@ def index(request):
     rates = Rate.objects.all()
     # return render_to_response('index.html', dict(data=ha,rates=rates , discounts=discounts))
     return render_to_response('cleaning.html')
+
+def help(request):
+    '''
+    render index
+    :param request:
+    :return:
+    '''
+    return render_to_response('help.html')
+
+def about(request):
+    '''
+    render index
+    :param request:
+    :return:
+    '''
+    return render_to_response('about.html')
+
 
 def search(request):
     '''

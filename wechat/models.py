@@ -1,5 +1,6 @@
 # coding: utf-8
 from django.db import models
+import datetime
 from MySQLdb.constants.FLAG import AUTO_INCREMENT
 
 class Discount_Info(models.Model):
@@ -14,15 +15,26 @@ class Discount_Info(models.Model):
     dis_url = models.CharField(max_length=256, null=False, default='')
     # discount url
     addtime = models.CharField(max_length=32, null=False, default='')
+    # status
+    status = models.IntegerField(max_length=11, null=False, default='')
     # language
     lang = models.IntegerField(max_length=32, null=False, default=0)
+    # date
 
-    def __repr__(self):
+    def __str__(self):
         return self.dis_title
+
+    def getDate(self):
+        print type(self.addtime)
+        value = datetime.datetime.fromtimestamp(int(float(self.addtime)))
+        return value.strftime('%Y-%m-%d %H:%M:%S')
+
+    date = property(getDate)
 
     class Meta(object):
         db_table = 'discount_info'
         app_label = 'wechat'
+
 
 # {
 #     u'province': u'',
@@ -57,6 +69,9 @@ class Visitor(models.Model):
         db_table = 'visitors'
         app_label = 'wechat'
 
+    def __str__(self):
+        return self.nickname
+
 
 class Rate(models.Model):
     '''
@@ -68,3 +83,6 @@ class Rate(models.Model):
     class Meta(object):
         db_table = 'rates'
         app_label = 'wechat'
+
+    def __str__(self):
+        return self.bank_name
