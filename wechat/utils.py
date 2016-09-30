@@ -160,10 +160,10 @@ def saveImage(url):
 
 # change image
 def imageMark(path):
-    text = u'我喜欢大饼饼哈哈哈哈'
+    text = u'那就买回来吃呀!'
     im = Image.open(path)
     mark = textToImg(text)
-    image = watermark(im, mark, 'center', 0.9)
+    image = watermark(im, mark, 'center', 0.8)
     if image:
         image.save(path)
         return path
@@ -173,7 +173,7 @@ def imageMark(path):
 
 # text 2 Image
 def textToImg(text, font_color="black", font_size=40):
-    font = ImageFont.truetype("/home/ubuntu/wechat/images/WawaSC-Regular.otf",font_size)
+    font = ImageFont.truetype("../images/WawaSC-Regular.otf",font_size)
     # multi lines
     text = text.split('\n')
     mark_width = 0
@@ -181,15 +181,14 @@ def textToImg(text, font_color="black", font_size=40):
         (width, height) = font.getsize(text[i])
         if mark_width < width:
             mark_width = width
-    mark_height = height* len(text)*2
+    mark_height = height* len(text)*1
     print width, height
     # generate pic
     mark = Image.new('RGBA', (mark_width, mark_height))
     draw = ImageDraw.ImageDraw(mark, "RGBA")
-    draw.setfont(font)
     for i in range(len(text)):
         (width, height) = font.getsize(text[i])
-        draw.text((0, i * height), text[i], fill=font_color)
+        draw.text((0, i * height), text[i], font=font, fill=font_color)
     return mark
 
 # set opacity
@@ -269,7 +268,7 @@ def simsimteach(req, res):
     return response
 
 # print saveImage("http://mmbiz.qpic.cn/mmbiz/KNgyCFSwIYcKNJr09gTCJ5S9og71Tlo2XvTSn6ByZhPybOfOuE906K7flkxJDoiaB73p6Ga3XrGLGPkvYjpPVsQ/0")
-# print imageMark("../images/WeChat_1467530177.jpeg")
+# imageMark("../images/1467531704.02.jpg")
 # mark = textToImg('我喜欢大饼饼哈哈哈哈哈')
 # print mark
 # print encodeurl("http://www.misspiepie.com/wechat/login")

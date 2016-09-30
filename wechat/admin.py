@@ -33,10 +33,14 @@ class DiscountAdmin(admin.ModelAdmin):
         obj.user = request.user
         obj.save()
 
+class VisitorAdmin(admin.ModelAdmin):
+    fields = ('image_tag', 'headimgurl','openid', 'province', 'city', 'country', 'sex', 'nickname', 'visit_time')
+    readonly_fields = ('image_tag',)
+
 
 
 admin.site.register(Discount_Info, DiscountAdmin)
-admin.site.register(Visitor)
+admin.site.register(Visitor, VisitorAdmin)
 admin.site.register(Rate)
 
 # Register your models here.

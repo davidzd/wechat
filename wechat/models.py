@@ -1,7 +1,18 @@
 # coding: utf-8
+from __future__ import division
+import os
+from PIL import Image
+
+from datetime import datetime, timedelta
+from django.utils.translation import ugettext as _
+from django.db.models.fields.files import ImageFieldFile
+from weixin.settings import MEDIA_ROOT, MEDIA_URL
+
 from django.db import models
 import datetime
+from django.utils.safestring import mark_safe
 from MySQLdb.constants.FLAG import AUTO_INCREMENT
+
 
 class Discount_Info(models.Model):
     '''
@@ -54,7 +65,7 @@ class Visitor(models.Model):
     # province
     province = models.CharField(max_length=32, null=False, default='')
     # headimgurl
-    headimgurl = models.CharField(max_length=256, null=False, default='')
+    headimgurl = models.ImageField(upload_to=MEDIA_ROOT)
     # city
     city = models.CharField(max_length=32, null=False, default='')
     # country
@@ -66,12 +77,22 @@ class Visitor(models.Model):
     # visit_time
     visit_time = models.CharField(max_length=32, null=False, default='')
     class Meta(object):
+        verbose_name_plural = _('Visitor')
         db_table = 'visitors'
         app_label = 'wechat'
 
-    def __str__(self):
-        return self.nickname
+    def image_tag(self):
+        return mark_safe(u'<img src="%s" width="100" height="100" />'%(MEDIA_URL+os.path.basename(self.headimgurl.url)))
+        image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
 
+    def __str__(self):
+        return self.nickname.encode('utf-8')
+
+    def save(self):
+        super(Visitor, self).save()
+        self.large_image = ImageFieldFile(self, self.headimgurl, MEDIA_ROOT + self.headimgurl.url)
+        super(Visitor, self).save()
 
 class Rate(models.Model):
     '''

@@ -22,6 +22,8 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+MEDIA_ROOT = BASE_DIR + '/static/images/upload/'
+MEDIA_URL = '/static/images/upload/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
