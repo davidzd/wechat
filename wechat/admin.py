@@ -6,7 +6,7 @@ Date: 03072016
 '''
 
 from django.contrib import admin
-from models import Discount_Info, Visitor, Rate
+from models import Discount_Info, Visitor, Rate, Banner
 
 def mark_item_off(modeladmin, request, queryset):
     queryset.update(status=0)
@@ -37,10 +37,14 @@ class VisitorAdmin(admin.ModelAdmin):
     fields = ('image_tag', 'headimgurl','openid', 'province', 'city', 'country', 'sex', 'nickname', 'visit_time')
     readonly_fields = ('image_tag',)
 
+class BannerAdmin(admin.ModelAdmin):
+    fields = ('image_tag', 'headimgurl','banner_id', 'add_time')
+    readonly_fields = ('image_tag',)
 
 
 admin.site.register(Discount_Info, DiscountAdmin)
 admin.site.register(Visitor, VisitorAdmin)
+admin.site.register(Banner, BannerAdmin)
 admin.site.register(Rate)
 
 # Register your models here.

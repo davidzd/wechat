@@ -94,6 +94,29 @@ class Visitor(models.Model):
         self.large_image = ImageFieldFile(self, self.headimgurl, MEDIA_ROOT + self.headimgurl.url)
         super(Visitor, self).save()
 
+
+class Banner(models.Model):
+    # openid
+    banner_id = models.CharField(max_length=32, primary_key=True, null=False)
+    # headimgurl
+    headimgurl = models.ImageField(upload_to=MEDIA_ROOT)
+    # addtime
+    add_time = models.CharField(max_length=32, null=False, default='')
+    class Meta(object):
+        verbose_name_plural = _('Banner')
+        db_table = 'banner'
+        app_label = 'wechat'
+
+    def image_tag(self):
+        return mark_safe(u'<img src="%s" width="100" height="100" />'%(MEDIA_URL+os.path.basename(self.headimgurl.url)))
+        image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
+
+    def save(self):
+        super(Banner, self).save()
+        self.large_image = ImageFieldFile(self, self.headimgurl, MEDIA_ROOT + self.headimgurl.url)
+        super(Banner, self).save()
+
 class Rate(models.Model):
     '''
     rate info

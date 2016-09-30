@@ -15,9 +15,11 @@ from utils import accessToken
 from utils import getToken
 from utils import getUserInfo
 from models import Discount_Info
-from models import Visitor
+from models import Visitor, Banner
+from weixin.settings import MEDIA_ROOT, MEDIA_URL
 from models import Rate
 import json
+import os
 
 @csrf_exempt
 @accessToken
@@ -83,6 +85,7 @@ def index(request):
           u'nickname': '\xe5\xb0\x8f\xe5\x93\x92'}
 
     is_exist = Visitor.objects.filter(openid=ha['openid'])
+    banner = Banner.objects.filter()[0]
     if not is_exist:
         user = Visitor()
     # 存在即更新
@@ -93,8 +96,9 @@ def index(request):
             setattr(user, key, ha[key])
     user.save()
     rates = Rate.objects.all()
+    url = MEDIA_URL+os.path.basename(banner.headimgurl.url)
     # return render_to_response('index.html', dict(data=ha,rates=rates , discounts=discounts))
-    return render_to_response('cleaning.html')
+    return render_to_response('cleaning.html', dict(url=url))
 
 def help(request):
     '''
