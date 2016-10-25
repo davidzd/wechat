@@ -20,6 +20,7 @@ import email.MIMEText
 import email.MIMEBase
 import os.path
 import urllib2
+from weixin.settings import FILE_ROOT
 
 # init token.
 TOKEN = "weixin"
@@ -93,7 +94,7 @@ def mailto(From, To, file_name):
 
 def requestAndSave(url):
     a = urllib2.urlopen(url)
-    with open('result.html', 'w') as f:
+    with open(FILE_ROOT+'result.html', 'w') as f:
         f.write(a.read())
     return 'result.html'
 
@@ -131,9 +132,10 @@ def responseMsg(request):
             elif msg['MsgType'] == 'image':
                 resultStr = handleImage(msg)
             else:
+                requestAndSave(msg['Content'])
                 resultStr = Message(type="text", msg=msg, text="火速前往你的kindle中")
                 mailto('davidzd@163.com', 'zhangdapi@kindle.cn',
-                       requestAndSave('https://mp.weixin.qq.com/wiki/17/f298879f8fb29ab98b2f2971d42552fd.html'))
+                       FILE_ROOT+'result.html')
                 # if checkTicket('2016-09-15'):
                 #     r1 = '2016-09-15-----------EXIST!!!!!!!!\n'
                 # if checkTicket('2016-09-15'):
