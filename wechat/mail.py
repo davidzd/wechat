@@ -53,3 +53,5 @@ def mailto(From, To, file_name):
     # 用smtp发送邮件
     try:
         server.sendmail(From, To, fullText)
+    except Exception:
+        print Exception
