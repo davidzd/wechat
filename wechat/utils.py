@@ -99,7 +99,7 @@ def responseMsg(request):
                 resultStr = Message(type="text", msg=msg, text=u"火速前往你的kindle中")
                 # mailto('davidzd@163.com', 'zhangdapi@kindle.cn',
                 #        'result.txt')
-                mailto('davidzd@163.com', '422586976@qq.com', 'result.html')
+                mailto('davidzd@163.com', '422586976@qq.com', 'xxf.txt')
         else:
             resultStr = Message(type="text", msg=msg)
         return resultStr
