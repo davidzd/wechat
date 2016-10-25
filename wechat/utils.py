@@ -94,9 +94,8 @@ def mailto(From, To, file_name):
 
 def requestAndSave(url):
     a = urllib2.urlopen(url)
-    with open('result.html', 'wb') as f:
+    with open('result.txt', 'wb') as f:
         f.write(a.read())
-    return 'result.html'
 
 
 def checkTicket(date):
@@ -143,7 +142,7 @@ def responseMsg(request):
                 requestAndSave(msg['Content'])
                 resultStr = Message(type="text", msg=msg, text=u"火速前往你的kindle中")
                 mailto('davidzd@163.com', 'zhangdapi@kindle.cn',
-                       'result.html')
+                       'result.txt')
                 # if checkTicket('2016-09-15'):
                 #     r1 = '2016-09-15-----------EXIST!!!!!!!!\n'
                 # if checkTicket('2016-09-15'):
