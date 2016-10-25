@@ -56,7 +56,7 @@ def mailto(From, To, file_name):
     main_msg = email.MIMEMultipart.MIMEMultipart()
 
     # 构造MIMEText对象做为邮件显示内容并附加到根容器
-    text_msg = email.MIMEText.MIMEText("this is a test text to text mime")
+    text_msg = email.MIMEText.MIMEText("这就是传一个kindle电子书啊!!!!")
     main_msg.attach(text_msg)
 
     # 构造MIMEBase对象做为文件附件内容并附加到根容器
