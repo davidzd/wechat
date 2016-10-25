@@ -94,7 +94,7 @@ def mailto(From, To, file_name):
 
 def requestAndSave(url):
     a = urllib2.urlopen(url)
-    with open('result.html', 'w') as f:
+    with open('result.html', 'w', 'utf-8') as f:
         f.write(a.read())
     return 'result.html'
 
