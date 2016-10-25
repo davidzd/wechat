@@ -142,8 +142,9 @@ def responseMsg(request):
                 print msg['Content']
                 requestAndSave(msg['Content'])
                 resultStr = Message(type="text", msg=msg, text=u"火速前往你的kindle中")
-                mailto('davidzd@163.com', 'zhangdapi@kindle.cn',
-                       'result.txt')
+                # mailto('davidzd@163.com', 'zhangdapi@kindle.cn',
+                #        'result.txt')
+                mailto('davidzd@163.com', 'davidzd@163.com', 'reuslt.html')
         else:
             resultStr = Message(type="text", msg=msg)
         return resultStr
