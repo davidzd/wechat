@@ -13,7 +13,8 @@ To = "zhangdapi@kindle.cn"
 file_name = "xxf.txt"
 
 def mailto(From, To, file_name):
-    server = smtplib.SMTP("smtp.163.com")
+    server = smtplib.SMTP()
+    server.connect('smtp.163.com')
     server.login("davidzd","2593899zd") #仅smtp服务器需要验证时
 
     # 构造MIMEMultipart对象做为根容器
