@@ -54,5 +54,5 @@ def mailto(From, To, file_name):
     try:
         print fullText
         server.sendmail(From, To, fullText)
-    except Exception:
-        print Exception
+    except Exception, e:
+        print e
