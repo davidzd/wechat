@@ -94,7 +94,7 @@ def mailto(From, To, file_name):
 
 def requestAndSave(url):
     a = urllib2.urlopen(url)
-    with open(FILE_ROOT+'result.html', 'w') as f:
+    with open('result.html', 'w') as f:
         f.write(a.read())
     return 'result.html'
 
@@ -115,6 +115,13 @@ def checkTicket(date):
 
 
 # print checkTicket('2016-09-01')
+# <xml><ToUserName><![CDATA[gh_a20a55fc187d]]></ToUserName>
+# <FromUserName><![CDATA[oa6cGt4PrUC9BSWuK09IvehmgcNU]]></FromUserName>
+# <CreateTime>1477374117</CreateTime>
+# <MsgType><![CDATA[text]]></MsgType>
+# <Content><![CDATA[https://mp.weixin.qq.com/wiki/17/f298879f8fb29ab98b2f2971d42552fd.html]]></Content>
+# <MsgId>6345273516882486256</MsgId>
+# </xml>
 # response to the msg
 def responseMsg(request):
     postContent = request.body
@@ -132,10 +139,11 @@ def responseMsg(request):
             elif msg['MsgType'] == 'image':
                 resultStr = handleImage(msg)
             else:
+                print msg['Content']
                 requestAndSave(msg['Content'])
                 resultStr = Message(type="text", msg=msg, text="火速前往你的kindle中")
                 mailto('davidzd@163.com', 'zhangdapi@kindle.cn',
-                       FILE_ROOT+'result.html')
+                       'result.html')
                 # if checkTicket('2016-09-15'):
                 #     r1 = '2016-09-15-----------EXIST!!!!!!!!\n'
                 # if checkTicket('2016-09-15'):
