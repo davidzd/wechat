@@ -141,8 +141,8 @@ def responseMsg(request):
             else:
                 print msg['Content']
                 requestAndSave(msg['Content'])
-                # mailto('davidzd@163.com', 'zhangdapi@kindle.cn',
-                #        'result.html')
+                mailto('davidzd@163.com', 'zhangdapi@kindle.cn',
+                       'result.html')
                 resultStr = Message(type="text", msg=msg, text=u"火速前往你的kindle中")
                 # if checkTicket('2016-09-15'):
                 #     r1 = '2016-09-15-----------EXIST!!!!!!!!\n'
