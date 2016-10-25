@@ -7,11 +7,6 @@ import email.MIMEBase
 import os.path
 import urllib2
 
-
-From = "davidzd@163.com"
-To = "zhangdapi@kindle.cn"
-file_name = "xxf.txt"
-
 def mailto(From, To, file_name):
     server = smtplib.SMTP()
     server.connect('smtp.163.com')
