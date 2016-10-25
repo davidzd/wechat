@@ -73,17 +73,16 @@ def responseMsg(request):
             elif msg['MsgType'] == 'image':
                 resultStr = handleImage(msg)
             else:
-                # resultStr = Message(type="image", msg=msg, text=u'只要你跟我说话,我就给你一个神奇的链接.')
-                # 有没有火车票在此一举
-                if checkTicket('2016-09-15'):
-                    r1 = '2016-09-15-----------EXIST!!!!!!!!\n'
-                if checkTicket('2016-09-15'):
-                    r2 = '2016-10-01-----------EXIST!!!!!!!!\n'
-                r1 = '2016-09-15-----------NO MORE...\n'
-                r2 = '2016-10-01-----------NO MORE...\n'
-                text = r1+r2
-                print text
-                resultStr = Message(type="text", msg=msg, text=text)
+                resultStr = Message(type="text", msg=msg, text=u'只要你跟我说话,我就给你一个神奇的链接.')
+                # if checkTicket('2016-09-15'):
+                #     r1 = '2016-09-15-----------EXIST!!!!!!!!\n'
+                # if checkTicket('2016-09-15'):
+                #     r2 = '2016-10-01-----------EXIST!!!!!!!!\n'
+                # r1 = '2016-09-15-----------NO MORE...\n'
+                # r2 = '2016-10-01-----------NO MORE...\n'
+                # text = r1+r2
+                # print text
+                # resultStr = Message(type="text", msg=msg, text=text)
         else:
             resultStr = Message(type="text",msg=msg)
         return resultStr

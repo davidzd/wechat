@@ -6,7 +6,7 @@ Date: 03072016
 '''
 
 from django.contrib import admin
-from models import Discount_Info, Visitor, Rate, Banner
+from models import Discount_Info, Visitor, Rate, Banner, About
 
 def mark_item_off(modeladmin, request, queryset):
     queryset.update(status=0)
@@ -46,5 +46,6 @@ admin.site.register(Discount_Info, DiscountAdmin)
 admin.site.register(Visitor, VisitorAdmin)
 admin.site.register(Banner, BannerAdmin)
 admin.site.register(Rate)
+admin.site.register(About)
 
 # Register your models here.

@@ -117,6 +117,25 @@ class Banner(models.Model):
         self.large_image = ImageFieldFile(self, self.headimgurl, MEDIA_ROOT + self.headimgurl.url)
         super(Banner, self).save()
 
+
+class About(models.Model):
+    # id
+    id = models.CharField(max_length=32, primary_key=True, null=False)
+    # title
+    title = models.CharField(max_length=32)
+    # headimgurl
+    content = models.CharField(max_length=256)
+    # addtime
+    add_time = models.CharField(max_length=32, null=False, default='')
+    class Meta(object):
+        verbose_name_plural = _('About')
+        db_table = 'about'
+        app_label = 'wechat'
+
+    def __repr__(self):
+        return "关于我们"
+
+
 class Rate(models.Model):
     '''
     rate info

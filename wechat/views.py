@@ -15,7 +15,7 @@ from utils import accessToken
 from utils import getToken
 from utils import getUserInfo
 from models import Discount_Info
-from models import Visitor, Banner
+from models import Visitor, Banner, About
 from weixin.settings import MEDIA_ROOT, MEDIA_URL
 from models import Rate
 import json
@@ -100,6 +100,32 @@ def index(request):
     # return render_to_response('index.html', dict(data=ha,rates=rates , discounts=discounts))
     return render_to_response('cleaning.html', dict(url=url))
 
+def wechat_index(request):
+    '''
+    render index
+    :param request:
+    :return:
+    '''
+    discounts = Discount_Info.objects.filter(lang=0,status=1).order_by('-dis_id')[:15]
+    ha = {u'province': u'', u'openid': u'oa6cGt4PrUC9BSWuK09IvehmgcNUaaaa',
+          u'headimgurl': u'http://wx.qlogo.cn/mmopen/PiajxSqBRaELwKcgGMFpnGn4WNVzPicUMoOuI0foZ06uozNK2pC4Bu96VibfyRDzvrkMY2kdSPEMcj97McG2J4a5A/0',
+          u'language': u'zh_CN', u'city': u'', u'country': '\xe4\xb8\xad\xe5\x9b\xbd', u'sex': 1, u'privilege': [],
+          u'nickname': '\xe5\xb0\x8f\xe5\x93\x92'}
+
+    is_exist = Visitor.objects.filter(openid=ha['openid'])
+
+    if not is_exist:
+        user = Visitor()
+    # 存在即更新
+    else:
+        user = is_exist[0]
+    for key in user.__dict__:
+        if key in ha:
+            setattr(user, key, ha[key])
+    user.save()
+    rates = Rate.objects.all()
+    return render_to_response('index.html', dict(data=ha,rates=rates , discounts=discounts))
+
 def help(request):
     '''
     render index
@@ -114,7 +140,13 @@ def about(request):
     :param request:
     :return:
     '''
-    return render_to_response('about.html')
+    about = About.objects.all()
+    title = ''
+    content= ''
+    if about:
+        title = about[0].title
+        content = about[0].content
+    return render_to_response('about.html', dict(title=title, content=content))
 
 
 def search(request):
