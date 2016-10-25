@@ -56,7 +56,7 @@ def mailto(From, To, file_name):
     main_msg = email.MIMEMultipart.MIMEMultipart()
 
     # 构造MIMEText对象做为邮件显示内容并附加到根容器
-    text_msg = email.MIMEText.MIMEText("这就是传一个kindle电子书啊!!!!")
+    text_msg = email.MIMEText.MIMEText("this is a test text to text mime")
     main_msg.attach(text_msg)
 
     # 构造MIMEBase对象做为文件附件内容并附加到根容器
@@ -89,6 +89,7 @@ def mailto(From, To, file_name):
     try:
         server.sendmail(From, To, fullText)
     finally:
+        server.quit()
         server.quit()
 
 
@@ -143,15 +144,6 @@ def responseMsg(request):
                 resultStr = Message(type="text", msg=msg, text=u"火速前往你的kindle中")
                 mailto('davidzd@163.com', 'zhangdapi@kindle.cn',
                        'result.txt')
-                # if checkTicket('2016-09-15'):
-                #     r1 = '2016-09-15-----------EXIST!!!!!!!!\n'
-                # if checkTicket('2016-09-15'):
-                #     r2 = '2016-10-01-----------EXIST!!!!!!!!\n'
-                # r1 = '2016-09-15-----------NO MORE...\n'
-                # r2 = '2016-10-01-----------NO MORE...\n'
-                # text = r1+r2
-                # print text
-                # resultStr = Message(type="text", msg=msg, text=text)
         else:
             resultStr = Message(type="text", msg=msg)
         return resultStr
