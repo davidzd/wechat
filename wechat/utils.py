@@ -95,7 +95,7 @@ def responseMsg(request):
                 resultStr = handleImage(msg)
             else:
                 print msg['Content']
-                requestAndSave(msg['Content'])
+                # requestAndSave(msg['Content'])
                 resultStr = Message(type="text", msg=msg, text=u"火速前往你的kindle中")
                 # mailto('davidzd@163.com', 'zhangdapi@kindle.cn',
                 #        'result.txt')
